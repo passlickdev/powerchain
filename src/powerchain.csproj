@@ -6,6 +6,15 @@
     <AssemblyVersion>0.0.0.1</AssemblyVersion>
     <AssemblyName>PowerChain</AssemblyName>
     <AssemblyTitle>PowerChain</AssemblyTitle>
+    <StartupObject>powerchain.Exec</StartupObject>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Authors>Passlick Development</Authors>
+    <Product>PowerChain Blockchain</Product>
+    <PackageId>PowerChain</PackageId>
+    <Copyright>(c) Passlick Development 2019. All rights reserved.</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <FileVersion>0.0.0.1</FileVersion>
+    <Version>0.0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

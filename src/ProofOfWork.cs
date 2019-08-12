@@ -6,5 +6,11 @@ namespace powerchain
 {
     class ProofOfWork
     {
+
+        // TODO: Proof of Work
+
     }
+
 }
+
+// (c) Passlick Development 2019. All rights reserved.
