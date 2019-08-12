@@ -7,16 +7,7 @@ namespace powerchain
     {
 
         // Fields
-        private List<Block> chain;
-
-
-        /// <summary>
-        /// Constructor of class 'Blockchain'
-        /// </summary>
-        public Blockchain()
-        {
-            chain = new List<Block>();
-        }
+        public List<Block> chain { get; } = new List<Block>();
 
 
         /// <summary>
@@ -42,8 +33,61 @@ namespace powerchain
         /// <returns>true: Chain is valid; false: Chain is invalid</returns>
         public bool validateChain()
         {
-            // TODO: Chain validation
-            return false;
+
+            Console.WriteLine("[INFO] Validating blockchain...");
+
+            // Validate genesis block
+            if (!chain[0].genBlock || chain[0].data != "GENESIS_BLOCK" || chain[0].prevHash != "0" || chain[0].hash != chain[0].calcHash())
+            {
+                Util.consoleWrite("[ERROR] Blockchain is invalid (Genesis block missing or corrupt)!", ConsoleColor.Red);
+                return false;
+            }
+
+            // Validate non-genesis blocks
+            for (int i = 1; i < chain.Count; i++)
+            {
+
+                Block curBlock = chain[i];
+                Block prevBlock = chain[i - 1];
+
+                if (curBlock.genBlock)
+                {
+                    Util.consoleWrite($"[ERROR] Blockchain is invalid at Block #{i} (Block is assigned as genesis block)!", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Block#       : {i}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Timestamp    : {curBlock.timestamp.ToString("yyyy-MM-ddTHH:mm:ss.fffffff")}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         cHash        : {curBlock.hash}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         pHash        : {curBlock.prevHash}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Genesis block: {curBlock.genBlock.ToString()}", ConsoleColor.Red);
+                    return false;
+                }
+
+                if (curBlock.hash != curBlock.calcHash())
+                {
+                    Util.consoleWrite($"[ERROR] Blockchain is invalid at Block #{i} (Calculated hash and cHash does not match)!", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Block#       : {i}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Timestamp    : {curBlock.timestamp.ToString("yyyy-MM-ddTHH:mm:ss.fffffff")}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         cHash        : {curBlock.hash}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         pHash        : {curBlock.prevHash}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Genesis block: {curBlock.genBlock.ToString()}", ConsoleColor.Red);
+                    return false;
+                }
+
+                if (curBlock.prevHash != prevBlock.hash || curBlock.prevHash != prevBlock.calcHash())
+                {
+                    Util.consoleWrite($"[ERROR] Blockchain is invalid at Block #{i} (Hash of previous block and pHash does not match)!", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Block#       : {i}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Timestamp    : {curBlock.timestamp.ToString("yyyy-MM-ddTHH:mm:ss.fffffff")}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         cHash        : {curBlock.hash}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         pHash        : {curBlock.prevHash}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Genesis block: {curBlock.genBlock.ToString()}", ConsoleColor.Red);
+                    return false;
+                }
+
+            }
+
+            Console.WriteLine($"[INFO] Blockchain is valid! Checked {chain.Count} blocks");
+            return true;
+
         }
 
     }

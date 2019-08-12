@@ -88,11 +88,67 @@ namespace powerchain
             Console.WriteLine("(c) Passlick Development 2019. All rights reserved.");
             Console.WriteLine("----------------------------------------------------------------------------------------------------\n");
 
-            Console.WriteLine("[INFO] Starting blockchain service...");
-            startupCheck();
+            if (args.Length == 0)
+            {
+                Util.consoleWrite("[WARNING] Please provide a start parameter! For help, use 'help' or '?'", ConsoleColor.Yellow);
+                Console.WriteLine("[INFO] Exiting program...");
+                Environment.Exit(0);
+            }
 
+            else
+            {
+                switch (args[0])
+                {
+
+                    case "RUN":
+                    case "run":
+                        Console.WriteLine("[INFO] Starting blockchain service...");
+                        startupCheck();
+                        break;
+
+                    case "INIT":
+                    case "init":
+                        break;
+
+                    case "VALIDATE":
+                    case "validate":
+                        break;
+
+                    case "ADD":
+                    case "add":
+                        break;
+
+                    case "GET":
+                    case "get":
+                        break;
+
+                    case "ABOUT":
+                    case "about":
+                        Util.consoleWrite($"[INFO] PowerChain Blockchain Solution {Assembly.GetEntryAssembly().GetName().Version}", ConsoleColor.Cyan);
+                        Util.consoleWrite("[INFO] (c) Passlick Development 2019. All rights reserved.", ConsoleColor.Cyan);
+                        Console.WriteLine("");
+                        Util.consoleWrite("[INFO] Website: https://passlickdev.com", ConsoleColor.Cyan);
+                        Util.consoleWrite("[INFO] GitHub: https://pdev.me/powerchain-github", ConsoleColor.Cyan);
+                        Console.WriteLine("");
+                        Util.consoleWrite("[INFO] This software is licensed under GNU General Public License v3.0", ConsoleColor.Cyan);
+                        Util.consoleWrite("[INFO] Made with <3 in Münster", ConsoleColor.Cyan);
+                        break;          // TODO: About
+
+                    case "HELP":
+                    case "help":
+                    case "?":
+                        Console.WriteLine("[INFO] RUN           Starts the PowerChain routine");
+                        Console.WriteLine("[INFO] ABOUT         Gives information about this software");
+                        Console.WriteLine("[INFO] HELP / ?      Opens the PowerChain help");
+                        break;
+
+                    default:
+                        break;
+
+                }
+
+            }
         }
-
     }
 }
 

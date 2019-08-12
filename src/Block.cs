@@ -8,11 +8,11 @@ namespace powerchain
     {
 
         // Fields
-        private DateTime timestamp { get; }
-        private string hash { get; }
-        private string prevHash { get; }
-        private bool genBlock { get; }
-        private dynamic data { get; }
+        public DateTime timestamp { get; }
+        public string hash { get; }
+        public string prevHash { get; }
+        public bool genBlock { get; }
+        public dynamic data { get; }
 
 
         /// <summary>
