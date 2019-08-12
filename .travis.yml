@@ -1,7 +1,7 @@
 language: csharp
 solution: ./src/powerchain/powerchain.sln
 mono: none
-dotnet: 2.1.801
+dotnet: 2.1.502
 
 install:
  - nuget restore ./src/powerchain/powerchain.sln
