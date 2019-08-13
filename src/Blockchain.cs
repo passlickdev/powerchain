@@ -7,7 +7,7 @@ namespace powerchain
     {
 
         // Fields
-        public List<Block> chain { get; } = new List<Block>();
+        public List<Block> chain { get; set; } = new List<Block>();
 
 
         /// <summary>
@@ -36,6 +36,13 @@ namespace powerchain
 
             Console.WriteLine("[INFO] Validating blockchain...");
 
+            // Check if chain is empty
+            if (chain.Count == 0 || chain == null)
+            {
+                Util.consoleWrite("[ERROR] Blockchain is invalid (No chain found or chain is empty)!", ConsoleColor.Red);
+                return false;
+            }
+
             // Validate genesis block
             if (!chain[0].genBlock || chain[0].data != "GENESIS_BLOCK" || chain[0].prevHash != "0" || chain[0].hash != chain[0].calcHash())
             {
@@ -54,7 +61,18 @@ namespace powerchain
                 {
                     Util.consoleWrite($"[ERROR] Blockchain is invalid at Block #{i} (Block is assigned as genesis block)!", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         Block#       : {i}", ConsoleColor.Red);
-                    Util.consoleWrite($"[ERROR]         Timestamp    : {curBlock.timestamp.ToString("yyyy-MM-ddTHH:mm:ss.fffffff")}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Timestamp    : {curBlock.timestamp}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         cHash        : {curBlock.hash}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         pHash        : {curBlock.prevHash}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Genesis block: {curBlock.genBlock.ToString()}", ConsoleColor.Red);
+                    return false;
+                }
+
+                if (curBlock.timestamp == null || curBlock.timestamp == "" || curBlock.hash == null || curBlock.hash == "" || curBlock.prevHash == null || curBlock.prevHash == "" || curBlock.salt == null || curBlock.salt == "")
+                {
+                    Util.consoleWrite($"[ERROR] Blockchain is invalid at Block #{i} (Attributes are corrupt)!", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Block#       : {i}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Timestamp    : {curBlock.timestamp}", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         cHash        : {curBlock.hash}", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         pHash        : {curBlock.prevHash}", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         Genesis block: {curBlock.genBlock.ToString()}", ConsoleColor.Red);
@@ -65,7 +83,7 @@ namespace powerchain
                 {
                     Util.consoleWrite($"[ERROR] Blockchain is invalid at Block #{i} (Calculated hash and cHash does not match)!", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         Block#       : {i}", ConsoleColor.Red);
-                    Util.consoleWrite($"[ERROR]         Timestamp    : {curBlock.timestamp.ToString("yyyy-MM-ddTHH:mm:ss.fffffff")}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Timestamp    : {curBlock.timestamp}", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         cHash        : {curBlock.hash}", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         pHash        : {curBlock.prevHash}", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         Genesis block: {curBlock.genBlock.ToString()}", ConsoleColor.Red);
@@ -76,7 +94,7 @@ namespace powerchain
                 {
                     Util.consoleWrite($"[ERROR] Blockchain is invalid at Block #{i} (Hash of previous block and pHash does not match)!", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         Block#       : {i}", ConsoleColor.Red);
-                    Util.consoleWrite($"[ERROR]         Timestamp    : {curBlock.timestamp.ToString("yyyy-MM-ddTHH:mm:ss.fffffff")}", ConsoleColor.Red);
+                    Util.consoleWrite($"[ERROR]         Timestamp    : {curBlock.timestamp}", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         cHash        : {curBlock.hash}", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         pHash        : {curBlock.prevHash}", ConsoleColor.Red);
                     Util.consoleWrite($"[ERROR]         Genesis block: {curBlock.genBlock.ToString()}", ConsoleColor.Red);
@@ -85,7 +103,7 @@ namespace powerchain
 
             }
 
-            Console.WriteLine($"[INFO] Blockchain is valid! Checked {chain.Count} blocks");
+            Console.WriteLine($"[INFO] Blockchain is valid! Checked {chain.Count} block(s) :-)");
             return true;
 
         }

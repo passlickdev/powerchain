@@ -8,18 +8,19 @@ namespace powerchain
     {
 
         /// <summary>
-        /// Parses the blockchain JSON into a dictionary
+        /// Deserializes a JSON to a list of 'Block's
         /// </summary>
         /// <param name="path">Relative path to the blockchain JSON</param>
         /// <returns></returns>
-        public static Dictionary<string, dynamic> parseToDict(string path)
-        {
-            Dictionary<string, dynamic> chain = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(File.ReadAllText(@path));
-            return chain;
-        }
+        public static List<Block> deserializeToChain(string path) => JsonConvert.DeserializeObject<List<Block>>(File.ReadAllText(@path));
 
 
-        // TODO: Parse JSON objects to 'Block' objects
+        /// <summary>
+        /// Serializes a list of 'Block's to JSON
+        /// </summary>
+        /// <param name="chain">Chain of 'Block's (obj)</param>
+        /// <param name="path">Save path of JSON</param>
+        public static void serializeToJSON(List<Block> chain, string path) => File.WriteAllText(@path, JsonConvert.SerializeObject(chain, Formatting.Indented));
 
     }
 }
