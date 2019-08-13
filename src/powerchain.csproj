@@ -15,6 +15,7 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <FileVersion>0.0.0.1</FileVersion>
     <Version>0.0.0.1</Version>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>

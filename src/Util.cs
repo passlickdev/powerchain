@@ -13,9 +13,11 @@ namespace powerchain
         /// <param name="color">Foreground color of console</param>
         public static void consoleWrite(string text, ConsoleColor color)
         {
+
             Console.ForegroundColor = color;
             Console.WriteLine(text);
             Console.ResetColor();
+
         }
 
 

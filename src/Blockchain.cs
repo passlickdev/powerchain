@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace powerchain
 {
@@ -15,8 +16,10 @@ namespace powerchain
         /// </summary>
         public void generateGenesis()
         {
+
             Block genesisBlock = new Block("0", "GENESIS_BLOCK", true);
             addBlock(genesisBlock);
+
         }
 
 
@@ -25,6 +28,14 @@ namespace powerchain
         /// </summary>
         /// <param name="block">Block to be added</param>
         public void addBlock(Block block) => chain.Add(block);
+
+
+        /// <summary>
+        /// Searches for block by hash
+        /// </summary>
+        /// <param name="hash">Hash to search for</param>
+        /// <returns>'Block' with matching hash</returns>
+        public Block getBlock(string hash) => chain.FirstOrDefault(x => x.hash == hash);
 
 
         /// <summary>
@@ -103,7 +114,7 @@ namespace powerchain
 
             }
 
-            Console.WriteLine($"[INFO] Blockchain is valid! Checked {chain.Count} block(s) :-)");
+            Console.WriteLine($"[INFO] Blockchain is valid! Checked {chain.Count} block(s)");
             return true;
 
         }

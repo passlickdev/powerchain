@@ -25,12 +25,14 @@ namespace powerchain
         /// <param name="data">Data content of block</param>
         public Block(string prevHash, string data, bool genBlock = false)
         {
+
             this.timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffZ");
             this.prevHash = prevHash;
             this.salt = Util.randomString();
             this.genBlock = genBlock;
             this.data = data;
             this.hash = calcHash();
+
         }
 
 
@@ -46,12 +48,14 @@ namespace powerchain
         [JsonConstructor]
         public Block(string timestamp, string hash, string prevHash, string salt, bool genBlock, string data)
         {
+
             this.timestamp = timestamp;
             this.hash = hash;
             this.prevHash = prevHash;
             this.salt = salt;
             this.genBlock = genBlock;
             this.data = data;
+
         }
 
 
