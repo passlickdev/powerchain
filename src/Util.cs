@@ -11,7 +11,7 @@ namespace powerchain
         /// </summary>
         /// <param name="text">Text to be written</param>
         /// <param name="color">Foreground color of console</param>
-        public static void consoleWrite(string text, ConsoleColor color)
+        public static void ConsoleWrite(string text, ConsoleColor color)
         {
 
             Console.ForegroundColor = color;
@@ -26,7 +26,7 @@ namespace powerchain
         /// </summary>
         /// <param name="length">Length of random string</param>
         /// <returns></returns>
-        public static string randomString(int length = 16)
+        public static string RandomString(int length = 16)
         {
 
             Random random = new Random();

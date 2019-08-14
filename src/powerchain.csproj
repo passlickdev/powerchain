@@ -9,17 +9,37 @@
     <StartupObject>powerchain.Exec</StartupObject>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Authors>Passlick Development</Authors>
-    <Product>PowerChain Blockchain</Product>
+    <Product>PowerChain Blockchain Solution</Product>
     <PackageId>PowerChain</PackageId>
-    <Copyright>(c) Passlick Development 2019. All rights reserved.</Copyright>
+    <Copyright>© Passlick Development 2019. All rights reserved.</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <FileVersion>0.0.0.1</FileVersion>
     <Version>0.0.0.1</Version>
     <SignAssembly>false</SignAssembly>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <PackageProjectUrl>https://github.com/passlickdev/powerchain</PackageProjectUrl>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/passlickdev/powerchain</RepositoryUrl>
+    <AssemblyOriginatorKeyFile>n_pass02.p12</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

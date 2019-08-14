@@ -28,10 +28,10 @@ namespace powerchain
 
             this.timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffZ");
             this.prevHash = prevHash;
-            this.salt = Util.randomString();
+            this.salt = Util.RandomString();
             this.genBlock = genBlock;
             this.data = data;
-            this.hash = calcHash();
+            this.hash = CalcHash();
 
         }
 
@@ -63,7 +63,7 @@ namespace powerchain
         /// Calculates the SHA256 hash of the current block
         /// </summary>
         /// <returns>SHA256 hash of block (string)</returns>
-        public string calcHash()
+        public string CalcHash()
         {
 
             // Block data
@@ -81,6 +81,24 @@ namespace powerchain
                 stringBuilder.Append(blockHash[i].ToString("x2"));
 
             return stringBuilder.ToString();
+
+        }
+
+
+        /// <summary>
+        /// Prints the meta information of the block (except data)
+        /// </summary>
+        /// <param name="displayType">String to be shown in the brackets</param>
+        /// <param name="color">Color of output</param>
+        /// <param name="blockId">ID of block</param>
+        public void PrintBlock(string displayType, ConsoleColor color, int blockId = -1)
+        {
+
+            Util.ConsoleWrite($"[{displayType.ToUpper()}]         Block#       : {((blockId < 0) ? "N/A" : blockId.ToString())}", color);
+            Util.ConsoleWrite($"[{displayType.ToUpper()}]         Timestamp    : {timestamp}", color);
+            Util.ConsoleWrite($"[{displayType.ToUpper()}]         cHash        : {hash}", color);
+            Util.ConsoleWrite($"[{displayType.ToUpper()}]         pHash        : {prevHash}", color);
+            Util.ConsoleWrite($"[{displayType.ToUpper()}]         Genesis block: {genBlock.ToString()}", color);
 
         }
 
