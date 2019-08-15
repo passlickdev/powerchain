@@ -36,17 +36,17 @@ You can pass arguments either as a parameter when starting the application (`/[A
 <br>
 
 | __Argument (parameter)__ | __Argument (CLI)__ |                                                                                     __Definition__                                                                                     |
-|:--------------------:|:--------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|         `/run`         |       `run`      | Currently no function.                                                                                                                                                              |
-|         `/init`        |      `init`      | Initializes a new local blockchain (including the genesis block).                                                                                                                                                 |
-|     `/load [PATH]`     |   `load [PATH]`  | Loads a local blockchain file. Uses default path when no path is given.<br><br>Default path: `%Documents%\Passlick Development\data\blockchain.json`<br>Example: `load "C:\Users\User\Desktop"`                                        |
-|     `/save [PATH]`     |   `save [PATH]`  | Saves the current blockchain. Uses default path when no path is given.<br><br>Default path: `%Documents%\Passlick Development\data\blockchain.json`<br>Example: `save "C:\Users\User\Desktop\blockchain.json"` |
-|       `/validate`      |    `validate`    | Validates the loaded blockchain. A valid blockchain is required for following arguments to work: `save`, `add`, `get`                                                                    |
-|      `/add [DATA]`     |   `add [DATA]`   | Adds a new block with data (`str`) to the loaded blockchain.<br>Example: `add "{timestamp=2019-08-15T18:43:10.4557493Z;hash=167cd7}"`                                   |
-|      `/get [HASH]`     |   `get [HASH]`   | Returns data from the loaded blockchain by SHA256 hash.<br>Example: `get 6eb10c0bcfef93aa85fefad9f8078be4cfce52935413820ef376d[...]`                                             |
-|        `/about`        |      `about`     | Returns information about the software.                                                                                                                                            |
-|         `/help`        |      `help`      | Opens the PowerChain help.                                                                                                                                                         |
-|         `/exit`        |      `exit`      | Exits the application.                                                                                                                                                             |
+|:--------------------:|:--------------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|         `/run`         |       `run`           | Currently no function.                                                                                                                                                              |
+|         `/init`        |      `init`           | Initializes a new local blockchain (including the genesis block).                                                                                                                                                 |
+|     `/load [PATH]`     |   `load [PATH]`       | Loads a local blockchain file. Uses default path when no path is given.<br><br>Default path: `%Documents%\Passlick Development\data\blockchain.json`<br>Example: `load "C:\Users\User\Desktop"`                                        |
+|     `/save [PATH]`     |   `save [PATH]`       | Saves the current blockchain. Uses default path when no path is given.<br><br>Default path: `%Documents%\Passlick Development\data\blockchain.json`<br>Example: `save "C:\Users\User\Desktop\blockchain.json"` |
+|       `/validate`      |    `validate`         | Validates the loaded blockchain. A valid blockchain is required for following arguments to work: `save`, `add`, `get`                                                                    |
+|      `/add [DATA]`     |   `add [DATA]`        | Adds a new block with data (`str`) to the loaded blockchain.<br>Example: `add "{timestamp=2019-08-15T18:43:10.4557493Z;hash=167cd7}"`                                   |
+|      `/get [HASH]`     |   `get [HASH]`        | Returns data from the loaded blockchain by SHA256 hash.<br>Example: `get 6eb10c0bcfef93aa85fefad9f8078be4cfce52935413820ef376d[...]`                                             |
+|        `/about`        |      `about`          | Returns information about the software.                                                                                                                                            |
+|         `/help`        |      `help`           | Opens the PowerChain help.                                                                                                                                                         |
+|         `/exit`        |      `exit`           | Exits the application.                                                                                                                                                             |
 
 <br>
 <br>
@@ -68,7 +68,7 @@ Download either the ZIP with a self-contained assembly (marked with the respecti
 ### Build the application
 
 To build the application yourself, download or clone the whole repository to your local machine, open your OS's respective shell, navigate to the repository and run following commands:
-- __Self-contained assembly__: `dotnet publish .\powerchain.csproj --configuration Release --framework netcoreapp2.1 --self-contained --runtime [RID]`<br>(For RID, see https://docs.microsoft.com/de-de/dotnet/core/rid-catalog)
+- __Self-contained assembly__: `dotnet publish .\powerchain.csproj --configuration Release --framework netcoreapp2.1 --self-contained --runtime [RID]`<br>(For RID, see https://docs.microsoft.com/en-us/dotnet/core/rid-catalog)
 - __Portable, runtime-dependent assembly__: `dotnet publish .\powerchain.csproj --configuration Release --framework netcoreapp2.1`
 
 > ⚠ **Note**: To build the application yourself, you need to have the .NET Core SDK 2.1 installed!
