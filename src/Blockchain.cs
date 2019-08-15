@@ -14,12 +14,12 @@ namespace powerchain
         /// <summary>
         /// Generates the genesis block
         /// </summary>
-        public void GenerateGenesis()
+        /// <returns>Status</returns>
+        public bool GenerateGenesis()
         {
-
             Block genesisBlock = new Block("0", "GENESIS_BLOCK", true);
             AddBlock(genesisBlock);
-
+            return true;
         }
 
 
@@ -27,7 +27,12 @@ namespace powerchain
         /// Adds a block to the chain
         /// </summary>
         /// <param name="block">Block to be added</param>
-        public void AddBlock(Block block) => chain.Add(block);
+        /// <returns>Status</returns>
+        public bool AddBlock(Block block)
+        {
+            chain.Add(block);
+            return true;
+        }
 
 
         /// <summary>
@@ -44,7 +49,6 @@ namespace powerchain
         /// <returns>true: Chain is valid; false: Chain is invalid</returns>
         public bool ValidateChain()
         {
-
             Console.WriteLine("[INFO] Validating blockchain...");
 
             // Check if chain is empty
@@ -95,12 +99,10 @@ namespace powerchain
                     curBlock.PrintBlock("ERROR", ConsoleColor.Red, i);
                     return false;
                 }
-
             }
 
             Console.WriteLine($"[INFO] Blockchain is valid! Checked {chain.Count} block(s)");
             return true;
-
         }
 
     }

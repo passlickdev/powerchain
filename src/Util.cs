@@ -13,11 +13,9 @@ namespace powerchain
         /// <param name="color">Foreground color of console</param>
         public static void ConsoleWrite(string text, ConsoleColor color)
         {
-
             Console.ForegroundColor = color;
             Console.WriteLine(text);
             Console.ResetColor();
-
         }
 
 
@@ -28,13 +26,11 @@ namespace powerchain
         /// <returns></returns>
         public static string RandomString(int length = 16)
         {
-
             Random random = new Random();
 
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
-
         }
 
     }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyVersion>0.0.0.1</AssemblyVersion>
+    <AssemblyVersion>0.1.1000.2</AssemblyVersion>
     <AssemblyName>PowerChain</AssemblyName>
     <AssemblyTitle>PowerChain</AssemblyTitle>
     <StartupObject>powerchain.Exec</StartupObject>
@@ -13,14 +13,15 @@
     <PackageId>PowerChain</PackageId>
     <Copyright>© Passlick Development 2019. All rights reserved.</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <FileVersion>0.0.0.1</FileVersion>
-    <Version>0.0.0.1</Version>
+    <FileVersion>0.1.1000.2</FileVersion>
+    <Version>0.1.1000.2</Version>
     <SignAssembly>false</SignAssembly>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageProjectUrl>https://github.com/passlickdev/powerchain</PackageProjectUrl>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/passlickdev/powerchain</RepositoryUrl>
     <AssemblyOriginatorKeyFile>n_pass02.p12</AssemblyOriginatorKeyFile>
+    <PackageLicenseExpression>GNU General Public License v3.0</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

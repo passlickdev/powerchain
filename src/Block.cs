@@ -25,14 +25,12 @@ namespace powerchain
         /// <param name="data">Data content of block</param>
         public Block(string prevHash, string data, bool genBlock = false)
         {
-
             this.timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffZ");
             this.prevHash = prevHash;
             this.salt = Util.RandomString();
             this.genBlock = genBlock;
             this.data = data;
             this.hash = CalcHash();
-
         }
 
 
@@ -48,14 +46,12 @@ namespace powerchain
         [JsonConstructor]
         public Block(string timestamp, string hash, string prevHash, string salt, bool genBlock, string data)
         {
-
             this.timestamp = timestamp;
             this.hash = hash;
             this.prevHash = prevHash;
             this.salt = salt;
             this.genBlock = genBlock;
             this.data = data;
-
         }
 
 
@@ -65,7 +61,6 @@ namespace powerchain
         /// <returns>SHA256 hash of block (string)</returns>
         public string CalcHash()
         {
-
             // Block data
             string blockHeader = $"{{timestamp={timestamp};prevHash={prevHash};salt={salt};genBlock={genBlock.ToString()};data={data}}}";
 
@@ -81,7 +76,6 @@ namespace powerchain
                 stringBuilder.Append(blockHash[i].ToString("x2"));
 
             return stringBuilder.ToString();
-
         }
 
 
@@ -93,13 +87,11 @@ namespace powerchain
         /// <param name="blockId">ID of block</param>
         public void PrintBlock(string displayType, ConsoleColor color, int blockId = -1)
         {
-
             Util.ConsoleWrite($"[{displayType.ToUpper()}]         Block#       : {((blockId < 0) ? "N/A" : blockId.ToString())}", color);
             Util.ConsoleWrite($"[{displayType.ToUpper()}]         Timestamp    : {timestamp}", color);
             Util.ConsoleWrite($"[{displayType.ToUpper()}]         cHash        : {hash}", color);
             Util.ConsoleWrite($"[{displayType.ToUpper()}]         pHash        : {prevHash}", color);
             Util.ConsoleWrite($"[{displayType.ToUpper()}]         Genesis block: {genBlock.ToString()}", color);
-
         }
 
     }

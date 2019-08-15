@@ -12,7 +12,6 @@ namespace powerchain
         /// </summary>
         public static void Start()
         {
-
             Console.Write("\nPowerChain> ");
 
             string input = Console.ReadLine();
@@ -23,7 +22,6 @@ namespace powerchain
                      .SelectMany(element => element).ToArray();
 
             ArgsParse(args);
-
         }
 
 
@@ -33,11 +31,9 @@ namespace powerchain
         /// <param name="args">Arguments to be parsed</param>
         public static void ArgsParse(string[] args)
         {
-
             if (args.Length == 0) Start();
             else
             {
-
                 switch (args[0])
                 {
 
@@ -45,6 +41,9 @@ namespace powerchain
                     case "/run":
                     case "RUN":
                     case "run":
+
+                        // TODO
+                        Util.ConsoleWrite("[WARNING] This does nothing at the moment :-(", ConsoleColor.Yellow);
 
                         Start();
                         break;
@@ -68,8 +67,6 @@ namespace powerchain
                         if (args.Length >= 2) Exec.LoadBlockchain(args[1]);
                         else Exec.LoadBlockchain(Exec.defaultFilePath);
 
-                        if (!Exec.ValidateBlockchain()) Util.ConsoleWrite("[WARNING] Blockchain is invalid! Data may be corrupted.", ConsoleColor.Yellow);
-
                         Start();
                         break;
 
@@ -84,7 +81,7 @@ namespace powerchain
                             if (Exec.ValidateBlockchain())
                             {
                                 if (args.Length >= 2) Exec.SaveBlockchain(args[1]);
-                                else Exec.SaveBlockchain(Exec.defaultFilePath);
+                                else Exec.SaveBlockchain(Exec.defaultDirPath);
                             }
 
                             else Util.ConsoleWrite("[ERROR] Blockchain is invalid! Data may be corrupted. Aborting...", ConsoleColor.Red);
@@ -152,20 +149,20 @@ namespace powerchain
                     case "about":
 
                         Util.ConsoleWrite($"====================================================================================================", ConsoleColor.Cyan);
-                        Util.ConsoleWrite($"ABOUT", ConsoleColor.Cyan);
+                        Util.ConsoleWrite($"** ABOUT **", ConsoleColor.Cyan);
                         Util.ConsoleWrite($"====================================================================================================", ConsoleColor.Cyan);
-                        Util.ConsoleWrite($"[INFO] PowerChain Blockchain Solution {Assembly.GetEntryAssembly().GetName().Version}", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] (c) Passlick Development 2019. All rights reserved.", ConsoleColor.Cyan);
+                        Util.ConsoleWrite($">>> PowerChain Blockchain Solution {Assembly.GetEntryAssembly().GetName().Version}", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> (c) Passlick Development 2019. All rights reserved.", ConsoleColor.Cyan);
                         Util.ConsoleWrite($"----------------------------------------------------------------------------------------------------", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] Website: https://passlickdev.com", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] GitHub: https://pdev.me/powerchain-github", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> Website: https://passlickdev.com", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> GitHub: https://pdev.me/powerchain-github", ConsoleColor.Cyan);
                         Util.ConsoleWrite($"----------------------------------------------------------------------------------------------------", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] This software is licensed under GNU General Public License v3.0", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] Made with <3 in Münster", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> This software is licensed under GNU General Public License v3.0", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> Made with <3 in Münster", ConsoleColor.Cyan);
                         Util.ConsoleWrite($"====================================================================================================", ConsoleColor.Cyan);
 
                         Start();
-                        break;          // TODO: About
+                        break;
 
                     case "/HELP":
                     case "/help":
@@ -175,18 +172,18 @@ namespace powerchain
                     case "?":
 
                         Util.ConsoleWrite($"====================================================================================================", ConsoleColor.Cyan);
-                        Util.ConsoleWrite($"HELP", ConsoleColor.Cyan);
+                        Util.ConsoleWrite($"** HELP **", ConsoleColor.Cyan);
                         Util.ConsoleWrite($"====================================================================================================", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] RUN           Runs the standard routine", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] INIT          Initializes a new local blockchain", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] LOAD [PATH]   Loads a local blockchain file. Uses default path when no path is given", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] SAVE [PATH]   Saves the current blockchain. Uses default path when no path is given", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] VALIDATE      Validates the loaded blockchain", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] ADD [DATA]    Adds data to the loaded blockchain", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] GET [HASH]    Gets data from the loaded blockchain by SHA256 hash", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] ABOUT         Gives information about this software", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] HELP          Opens the PowerChain help", ConsoleColor.Cyan);
-                        Util.ConsoleWrite("[INFO] EXIT          Exits the application", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> RUN           Runs the standard routine", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> INIT          Initializes a new local blockchain", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> LOAD [PATH]   Loads a local blockchain file. Uses default path when no path is given", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> SAVE [PATH]   Saves the current blockchain. Uses default path when no path is given", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> VALIDATE      Validates the loaded blockchain", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> ADD [DATA]    Adds data to the loaded blockchain", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> GET [HASH]    Gets data from the loaded blockchain by SHA256 hash", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> ABOUT         Gives information about this software", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> HELP          Opens the PowerChain help", ConsoleColor.Cyan);
+                        Util.ConsoleWrite(">>> EXIT          Exits the application", ConsoleColor.Cyan);
                         Util.ConsoleWrite($"====================================================================================================", ConsoleColor.Cyan);
 
                         Start();
@@ -206,13 +203,9 @@ namespace powerchain
                         break;
 
                 }
-
             }
-
         }
-
     }
-
 }
 
 // (c) Passlick Development 2019. All rights reserved.
